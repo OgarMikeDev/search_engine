@@ -1,13 +1,31 @@
 package searchengine.model;
 
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import searchengine.config.EnumStatusSyte;
 
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Setter
+@Getter
 @Entity
 public class Site {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    //id
     private Integer id;
+
+    private EnumStatusSyte status;
+
+    @Column(name = "status_time")
+    private LocalDateTime statusTime;
+
+    @Column(name = "last_error")
+    private String lastError;
+
+    private String url;
+
+    private String name;
 
 }
