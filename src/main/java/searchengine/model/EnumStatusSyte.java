@@ -1,4 +1,4 @@
-package searchengine.config;
+package searchengine.model;
 
 public enum EnumStatusSyte {
     INDEXING,
