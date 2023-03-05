@@ -20,9 +20,8 @@ public class Page {
 
 
 
-    @Column(columnDefinition = "TEXT", unique = true)
+    @Column(columnDefinition = "TEXT NOT NULL, INDEX(path(255))")
     private String path;
-
 
     private int code;
 

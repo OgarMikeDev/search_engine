@@ -12,10 +12,10 @@ import java.time.LocalDateTime;
 public class Site {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private int id;
 
-    @Column(columnDefinition = "ENUM('INDEXING', 'FAILED', 'INDEXED')")
+    @Column(columnDefinition = "ENUM('INDEXING', 'INDEXED', 'FAILED')")
     private Enum status;
 
     @Column(name = "status_time")
@@ -24,9 +24,9 @@ public class Site {
     @Column(name = "last_error", columnDefinition = "TEXT")
     private String lastError;
 
-    @Column(columnDefinition = "VARCHAR 255")
+    @Column(columnDefinition = "VARCHAR(255)")
     private String url;
 
-    @Column(columnDefinition = "VARCHAR 255")
+    @Column(columnDefinition = "VARCHAR(255)")
     private String name;
 }
