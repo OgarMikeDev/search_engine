@@ -1,15 +1,16 @@
 package searchengine.services;
 
+import org.springframework.stereotype.Service;
+import searchengine.config.SitesList;
+
 import java.util.concurrent.RecursiveAction;
 
-public class IndexationService extends RecursiveAction {
+@Service
+public class IndexationService {
+    private final SitesList sitesList;
 
-    private void startIndexing() {
-
+    public IndexationService(SitesList sitesList) {
+        this.sitesList = sitesList;
     }
 
-    @Override
-    protected void compute() {
-
-    }
 }

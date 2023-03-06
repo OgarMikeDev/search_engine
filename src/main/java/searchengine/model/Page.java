@@ -27,6 +27,6 @@ public class Page {
 
 
     @Column(columnDefinition = "MEDIUMTEXT")
-    private String context;
+    private String content;
 
 }
