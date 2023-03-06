@@ -6,17 +6,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import searchengine.dto.statistics.StatisticsResponse;
-import searchengine.repositories.Repository;
+import searchengine.repositories.PageRepository;
 import searchengine.services.StatisticsService;
-
-import java.util.concurrent.RecursiveTask;
 
 @RestController
 @RequestMapping("/api")
 public class ApiController {
 
-    @Autowired
-    private Repository repository;
+//    @Autowired
+//    private PageRepository repository;
 
     private final StatisticsService statisticsService;
 
