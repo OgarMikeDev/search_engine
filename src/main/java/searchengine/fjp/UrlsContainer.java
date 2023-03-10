@@ -9,10 +9,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class UrlsContainer {
     private static String mainPageUrl;
-//    public static Set<String> uniqueUrls = ConcurrentHashMap.newKeySet();
+    public static Set<String> uniqueUrls = ConcurrentHashMap.newKeySet();
 
-    @Autowired
-    private static PageRepository repository;
+//    @Autowired
+//    private static PageRepository repository;
 
 
     public static String getMainPageUrl() {
@@ -21,7 +21,7 @@ public class UrlsContainer {
 
     public static void setMainPageUrl(String mainPageUrl) {
         UrlsContainer.mainPageUrl = mainPageUrl;
-        repository.save(mainPageUrl);
+        uniqueUrls.add(mainPageUrl);
     }
 
 }

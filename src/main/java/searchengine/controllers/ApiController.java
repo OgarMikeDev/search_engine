@@ -13,9 +13,6 @@ import searchengine.services.StatisticsService;
 @RequestMapping("/api")
 public class ApiController {
 
-//    @Autowired
-//    private PageRepository repository;
-
     private final StatisticsService statisticsService;
 
     public ApiController(StatisticsService statisticsService) {
@@ -24,6 +21,11 @@ public class ApiController {
 
     @GetMapping("/statistics")
     public ResponseEntity<StatisticsResponse> statistics() {
+        return ResponseEntity.ok(statisticsService.getStatistics());
+    }
+
+    @GetMapping("/startIndexing")
+    public ResponseEntity<StatisticsResponse> indexService() {
         return ResponseEntity.ok(statisticsService.getStatistics());
     }
 }
