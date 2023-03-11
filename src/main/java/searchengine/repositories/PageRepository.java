@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import searchengine.model.Page;
 
 @Repository
-public interface PageRepository extends CrudRepository<Page, String> {
+public interface PageRepository extends CrudRepository<Page, Integer> {
 }

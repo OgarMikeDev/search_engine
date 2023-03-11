@@ -22,6 +22,7 @@ public class UrlsContainer {
     public static void setMainPageUrl(String mainPageUrl) {
         UrlsContainer.mainPageUrl = mainPageUrl;
         uniqueUrls.add(mainPageUrl);
+
     }
 
 }
