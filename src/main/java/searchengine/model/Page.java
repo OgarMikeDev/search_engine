@@ -16,7 +16,7 @@ public class Page {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "site_id")
-    private Site site;
+    private int site;
 
 
 

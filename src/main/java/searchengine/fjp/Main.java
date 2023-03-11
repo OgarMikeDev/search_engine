@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import searchengine.model.Enum;
 import searchengine.model.Site;
 import searchengine.repositories.PageRepository;
+import searchengine.repositories.SiteRepository;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,8 +18,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @RequiredArgsConstructor
 public class Main {
+    @Autowired
+    private static SiteRepository siteRepository;
+
     public static String url = "http://www.playback.ru/";
-    private static AtomicInteger idGenerator = new AtomicInteger();
+    private static AtomicInteger idGeneratorForSite = new AtomicInteger();
 
     public static void main(String[] args) {
         UrlsContainer.setMainPageUrl(url);
@@ -34,10 +38,13 @@ public class Main {
         site.setLastError("");
         site.setUrl(url);
         site.setName(url);
+
+        siteRepository.save(site);
+
     }
 
 
-    private static int generatedId() {
-        return idGenerator.getAndIncrement();
+    public static int generatedId() {
+        return idGeneratorForSite.getAndIncrement();
     }
 }
