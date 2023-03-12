@@ -2,6 +2,7 @@ package searchengine.fjp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import searchengine.model.Page;
+import searchengine.model.Site;
 import searchengine.repositories.PageRepository;
 
 import java.util.Set;
@@ -12,7 +13,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class UrlsContainer {
     @Autowired
     private static PageRepository pageRepository;
-
 
     private static String mainPageUrl;
 
@@ -33,14 +33,11 @@ public class UrlsContainer {
 
         int idPage = 1;
         page.setId(idPage);
-        page.setSite(1);
+        page.setSite(new Site());
         page.setPath(mainPageUrl);
         page.setCode(200);
         page.setContent("<!DOCTYPE html><html><head><title>");
 
         pageRepository.save(page);
-
-
     }
-
 }
