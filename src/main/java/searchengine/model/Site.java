@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Setter
 @Getter
@@ -29,4 +30,10 @@ public class Site {
 
     @Column(columnDefinition = "VARCHAR(255)")
     private String name;
+
+    private static AtomicInteger idGeneratorForSite = new AtomicInteger();
+
+    public static int generatedId() {
+        return idGeneratorForSite.getAndIncrement();
+    }
 }
