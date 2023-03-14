@@ -1,13 +1,13 @@
 package searchengine.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import searchengine.config.ConfigSite;
 import searchengine.config.SitesList;
 import searchengine.dto.statistics.*;
-import searchengine.fjp.Node;
-import searchengine.fjp.UrlsContainer;
-import searchengine.fjp.WebScraper;
+import searchengine.dto.statistics.request.RequestSite;
+import searchengine.dto.statistics.response.ResponseSite;
 import searchengine.model.Enum;
 import searchengine.model.Site;
 import searchengine.repositories.SiteRepository;
@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ForkJoinPool;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +24,7 @@ public class StatisticsServiceImpl implements StatisticsService {
     private final Random random = new Random();
     private final SitesList sites;
 
+    @Autowired
     private final SiteRepository siteRepository;
 
 
@@ -71,22 +71,22 @@ public class StatisticsServiceImpl implements StatisticsService {
     }
 
     @Override
-    public ResponseSite createEntry(String url, String name) {
+    public ResponseSite createEntry(RequestSite request) {
 
         Site site = new Site();
         int idSite = site.generatedId();
         site.setStatus(Enum.INDEXING);
-        site.setStatusTime(LocalDateTime.now());
-        site.setLastError("");
-        site.setUrl(url);
-        site.setName(name);
+        site.setStatusTime(request.getStatusTime());
+        site.setLastError(request.getLastError());
+        site.setUrl(request.getUrl());
+        site.setName(request.getName());
 
         siteRepository.save(site);
 
-        UrlsContainer.setMainPageUrl(url);
-        Node node = new ForkJoinPool()
-                .invoke(new WebScraper(new Node(url)));
+//        UrlsContainer.setMainPageUrl(url);
+//        Node node = new ForkJoinPool()
+//                .invoke(new WebScraper(new Node(url)));
 
-        return new ResponseSite(site.getId(), site.getStatus(), site.getStatusTime(), site.getLastError(), site.getUrl(), site.getName());
+        return new ResponseSite(site.getStatus(), site.getUrl(), site.getName(), site.getLastError());
     }
 }
