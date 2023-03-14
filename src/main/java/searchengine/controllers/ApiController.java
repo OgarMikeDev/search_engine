@@ -1,5 +1,6 @@
 package searchengine.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import searchengine.services.StatisticsService;
 @RequestMapping("/api")
 public class ApiController {
 
+    @Autowired
     private final StatisticsService service;
 
     public ApiController(StatisticsService service) {

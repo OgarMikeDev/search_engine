@@ -8,11 +8,11 @@ spring.jpa.properties.dialect: org.hibernate.dialect.MySQL8Dialect
 
 indexing-settings:
   sites:
-    - url: http://www.playback.ru
-      name: PlayBack.Ru
-#    - url: https://www.lenta.ru
-#      name: Лента.ру
-#    - url: https://www.skillbox.ru
-#      name: Skillbox
-#    - url: https://www.playback.ru
+#    - url: http://www.playback.ru
 #      name: PlayBack.Ru
+    - url: https://www.lenta.ru
+      name: Лента.ру
+    - url: https://www.skillbox.ru
+      name: Skillbox
+    - url: https://www.playback.ru
+      name: PlayBack.Ru
