@@ -87,6 +87,6 @@ public class StatisticsServiceImpl implements StatisticsService {
         Node node = new ForkJoinPool()
                 .invoke(new WebScraper(new Node(url)));
 
-        return null;
+        return new ResponseSite(site.getId(), site.getStatus(), site.getStatusTime(), site.getLastError(), site.getUrl(), site.getName());
     }
 }
