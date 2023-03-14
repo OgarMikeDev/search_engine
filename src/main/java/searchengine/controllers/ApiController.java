@@ -23,7 +23,7 @@ import java.util.concurrent.ForkJoinPool;
 
 @RestController
 @RequestMapping("/api")
-@ConfigurationProperties(prefix = "indexing-settings:sites:")
+@ConfigurationProperties(prefix = "indexing-settings")
 public class ApiController {
 
     private final StatisticsService statisticsService;
