@@ -16,8 +16,6 @@ public class RequestSite {
 
     private Enum status;
 
-    private LocalDateTime statusTime;
-
     private String lastError;
 
     private String url;
