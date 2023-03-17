@@ -75,7 +75,7 @@ public class StatisticsServiceImpl implements StatisticsService {
 
         Site site = new Site();
         int idSite = site.generatedId();
-        site.setStatus(Enum.INDEXING);
+        site.setStatus(request.getStatus());
         site.setStatusTime(LocalDateTime.now());
         site.setLastError(request.getLastError());
         site.setUrl(request.getUrl());

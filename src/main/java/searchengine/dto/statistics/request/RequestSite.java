@@ -1,18 +1,16 @@
 package searchengine.dto.statistics.request;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import searchengine.model.Enum;
 
 import java.time.LocalDateTime;
 
 @Data
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class RequestSite {
-    public RequestSite(Enum status, String lastError, String url, String name) {
-        this.status = status;
-        this.lastError = lastError;
-        this.url = url;
-        this.name = name;
-    }
 
     private Enum status;
 

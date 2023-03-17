@@ -1,5 +1,6 @@
 package searchengine.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.http.ResponseEntity;
@@ -11,14 +12,11 @@ import searchengine.services.StatisticsService;
 
 @RestController
 @RequestMapping("/api")
+@RequiredArgsConstructor
 public class ApiController {
 
     @Autowired
     private final StatisticsService service;
-
-    public ApiController(StatisticsService service) {
-        this.service = service;
-    }
 
     @GetMapping("/statistics/")
     public ResponseEntity<StatisticsResponse> statistics() {
@@ -26,7 +24,7 @@ public class ApiController {
     }
 
     @PostMapping("/startIndexing/")
-    @ConfigurationProperties(prefix = "indexing-settings")
+//    @ConfigurationProperties(prefix = "indexing-settings")
     public ResponseSite startIndexing(@RequestBody RequestSite request) {
         return service.createEntry(request);
     }
