@@ -3,13 +3,11 @@ package searchengine.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import searchengine.config.ConfigSite;
+import searchengine.config.Site;
 import searchengine.config.SitesList;
 import searchengine.dto.statistics.*;
 import searchengine.dto.statistics.request.RequestSite;
 import searchengine.dto.statistics.response.ResponseSite;
-import searchengine.model.Enum;
-import searchengine.model.Site;
 import searchengine.repositories.SiteRepository;
 
 import java.time.LocalDateTime;
@@ -42,9 +40,9 @@ public class StatisticsServiceImpl implements StatisticsService {
         total.setIndexing(true);
 
         List<DetailedStatisticsItem> detailed = new ArrayList<>();
-        List<ConfigSite> sitesList = sites.getSites();
+        List<Site> sitesList = sites.getSites();
         for(int i = 0; i < sitesList.size(); i++) {
-            ConfigSite site = sitesList.get(i);
+            Site site = sitesList.get(i);
             DetailedStatisticsItem item = new DetailedStatisticsItem();
             item.setName(site.getName());
             item.setUrl(site.getUrl());
@@ -73,7 +71,7 @@ public class StatisticsServiceImpl implements StatisticsService {
     @Override
     public ResponseSite createEntry(RequestSite request) {
 
-        Site site = new Site();
+        searchengine.model.Site site = new searchengine.model.Site();
         int idSite = site.generatedId();
         site.setStatus(request.getStatus());
         site.setStatusTime(LocalDateTime.now());

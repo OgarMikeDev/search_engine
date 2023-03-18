@@ -18,12 +18,13 @@ public class ApiController {
     @Autowired
     private final StatisticsService service;
 
-    @GetMapping("/statistics/")
+    @GetMapping("/statistics")
     public ResponseEntity<StatisticsResponse> statistics() {
         return ResponseEntity.ok(service.getStatistics());
     }
 
-    @PostMapping("/startIndexing/")
+
+    @PostMapping("/startIndexing")
 //    @ConfigurationProperties(prefix = "indexing-settings")
     public ResponseSite startIndexing(@RequestBody RequestSite request) {
         return service.createEntry(request);
