@@ -1,12 +1,10 @@
 package searchengine.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
 
-@Setter
-@Getter
+@Data
 @Entity
 public class Page {
     @Id

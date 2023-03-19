@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import searchengine.dto.statistics.StatisticsResponse;
 import searchengine.dto.statistics.request.RequestSite;
 import searchengine.dto.statistics.response.ResponseSite;
-import searchengine.dto.statistics.StatisticsResponse;
 import searchengine.services.StatisticsService;
 
 @RestController

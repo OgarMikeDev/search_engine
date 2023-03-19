@@ -3,12 +3,12 @@ package searchengine.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import searchengine.config.Site;
+import searchengine.config.SiteConfig;
 import searchengine.config.SitesList;
 import searchengine.dto.statistics.*;
 import searchengine.dto.statistics.request.RequestSite;
 import searchengine.dto.statistics.response.ResponseSite;
-import searchengine.repositories.SiteRepository;
+//import searchengine.repositories.SiteRepository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -22,8 +22,8 @@ public class StatisticsServiceImpl implements StatisticsService {
     private final Random random = new Random();
     private final SitesList sites;
 
-    @Autowired
-    private final SiteRepository siteRepository;
+//    @Autowired
+//    private SiteRepository siteRepository;
 
 
     @Override
@@ -40,9 +40,9 @@ public class StatisticsServiceImpl implements StatisticsService {
         total.setIndexing(true);
 
         List<DetailedStatisticsItem> detailed = new ArrayList<>();
-        List<Site> sitesList = sites.getSites();
+        List<SiteConfig> sitesList = sites.getSites();
         for(int i = 0; i < sitesList.size(); i++) {
-            Site site = sitesList.get(i);
+            SiteConfig site = sitesList.get(i);
             DetailedStatisticsItem item = new DetailedStatisticsItem();
             item.setName(site.getName());
             item.setUrl(site.getUrl());
@@ -79,7 +79,7 @@ public class StatisticsServiceImpl implements StatisticsService {
         site.setUrl(request.getUrl());
         site.setName(request.getName());
 
-        siteRepository.save(site);
+//        siteRepository.save(site);
 
 //        UrlsContainer.setMainPageUrl(url);
 //        Node node = new ForkJoinPool()

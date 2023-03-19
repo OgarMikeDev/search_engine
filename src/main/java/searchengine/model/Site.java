@@ -1,16 +1,15 @@
 package searchengine.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Setter
-@Getter
+@Data
 @Entity
+@NoArgsConstructor
 public class Site {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

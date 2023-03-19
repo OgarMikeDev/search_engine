@@ -7,7 +7,6 @@ spring.jpa.show-sql: true
 spring.jpa.properties.dialect: org.hibernate.dialect.MySQL8Dialect
 
 
-
 indexing-settings:
   sites:
     - url: https://www.lenta.ru

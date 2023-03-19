@@ -8,8 +8,6 @@ import searchengine.model.Enum;
 import java.time.LocalDateTime;
 
 @Data
-@RequiredArgsConstructor
-@AllArgsConstructor
 public class RequestSite {
 
     private Enum status;
