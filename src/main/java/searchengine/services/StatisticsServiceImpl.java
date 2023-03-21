@@ -8,7 +8,7 @@ import searchengine.config.SitesList;
 import searchengine.dto.statistics.*;
 import searchengine.dto.statistics.request.RequestSite;
 import searchengine.dto.statistics.response.ResponseSite;
-//import searchengine.repositories.SiteRepository;
+import searchengine.repositories.SiteRepository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -22,8 +22,8 @@ public class StatisticsServiceImpl implements StatisticsService {
     private final Random random = new Random();
     private final SitesList sites;
 
-//    @Autowired
-//    private SiteRepository siteRepository;
+    @Autowired
+    private final SiteRepository siteRepository;
 
 
     @Override
@@ -79,7 +79,7 @@ public class StatisticsServiceImpl implements StatisticsService {
         site.setUrl(request.getUrl());
         site.setName(request.getName());
 
-//        siteRepository.save(site);
+        siteRepository.save(site);
 
 //        UrlsContainer.setMainPageUrl(url);
 //        Node node = new ForkJoinPool()
