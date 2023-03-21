@@ -2,6 +2,7 @@ package searchengine.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import searchengine.config.SiteConfig;
 import searchengine.config.SitesList;
@@ -22,8 +23,9 @@ public class StatisticsServiceImpl implements StatisticsService {
     private final Random random = new Random();
     private final SitesList sites;
 
-    @Autowired
-    private final SiteRepository siteRepository;
+
+//    @Autowired
+    private SiteRepository siteRepository;
 
 
     @Override
