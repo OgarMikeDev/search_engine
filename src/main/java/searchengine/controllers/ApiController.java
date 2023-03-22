@@ -12,11 +12,10 @@ import searchengine.services.StatisticsService;
 
 @RestController
 @RequestMapping("/api")
-@RequiredArgsConstructor
 public class ApiController {
 
     @Autowired
-    private final StatisticsService service;
+    private StatisticsService service;
 
     @GetMapping("/statistics")
     public ResponseEntity<StatisticsResponse> statistics() {

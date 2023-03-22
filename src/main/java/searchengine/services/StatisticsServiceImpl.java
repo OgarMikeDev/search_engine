@@ -1,8 +1,9 @@
 package searchengine.services;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import searchengine.config.SiteConfig;
 import searchengine.config.SitesList;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
+@Component
 @Service
 @RequiredArgsConstructor
 public class StatisticsServiceImpl implements StatisticsService {
@@ -24,8 +27,11 @@ public class StatisticsServiceImpl implements StatisticsService {
     private final SitesList sites;
 
 
-//    @Autowired
-    private SiteRepository siteRepository;
+   @Autowired
+   private SiteRepository siteRepository;
+
+
+
 
 
     @Override
