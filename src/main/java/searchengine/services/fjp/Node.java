@@ -1,4 +1,4 @@
-package searchengine.fjp;
+package searchengine.services.fjp;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-//package searchengine.fjp;
+//package searchengine.services.fjp;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
 //import searchengine.model.Page;
