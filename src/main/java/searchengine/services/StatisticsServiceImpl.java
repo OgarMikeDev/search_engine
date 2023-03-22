@@ -1,15 +1,13 @@
 package searchengine.services;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import searchengine.config.SiteConfig;
+import searchengine.config.Site;
 import searchengine.config.SitesList;
 import searchengine.dto.statistics.*;
 import searchengine.dto.statistics.request.RequestSite;
 import searchengine.dto.statistics.response.ResponseSite;
+import searchengine.model.SiteEntity;
 import searchengine.repositories.SiteRepository;
 
 import java.time.LocalDateTime;
@@ -18,7 +16,6 @@ import java.util.List;
 import java.util.Random;
 
 
-@Component
 @Service
 @RequiredArgsConstructor
 public class StatisticsServiceImpl implements StatisticsService {
@@ -27,11 +24,8 @@ public class StatisticsServiceImpl implements StatisticsService {
     private final SitesList sites;
 
 
-   @Autowired
-   private SiteRepository siteRepository;
-
-
-
+//    @Autowired
+   private final SiteRepository siteRepository;
 
 
     @Override
@@ -48,9 +42,9 @@ public class StatisticsServiceImpl implements StatisticsService {
         total.setIndexing(true);
 
         List<DetailedStatisticsItem> detailed = new ArrayList<>();
-        List<SiteConfig> sitesList = sites.getSites();
+        List<Site> sitesList = sites.getSites();
         for(int i = 0; i < sitesList.size(); i++) {
-            SiteConfig site = sitesList.get(i);
+            Site site = sitesList.get(i);
             DetailedStatisticsItem item = new DetailedStatisticsItem();
             item.setName(site.getName());
             item.setUrl(site.getUrl());
@@ -79,7 +73,7 @@ public class StatisticsServiceImpl implements StatisticsService {
     @Override
     public ResponseSite createEntry(RequestSite request) {
 
-        searchengine.model.Site site = new searchengine.model.Site();
+        SiteEntity site = new SiteEntity();
         int idSite = site.generatedId();
         site.setStatus(request.getStatus());
         site.setStatusTime(LocalDateTime.now());
@@ -95,4 +89,5 @@ public class StatisticsServiceImpl implements StatisticsService {
 
         return new ResponseSite(site.getStatus(), site.getUrl(), site.getName(), site.getLastError());
     }
+
 }

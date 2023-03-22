@@ -6,16 +6,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import searchengine.config.SitesList;
 import searchengine.model.Page;
-import searchengine.model.Site;
-
-import java.util.concurrent.RecursiveAction;
+import searchengine.model.SiteEntity;
 
 @Service
 @RequiredArgsConstructor
 public class IndexationService {
     private final SitesList sitesList;
     public ResponseEntity startIndexing() {
-        Site site = new Site();
+        SiteEntity site = new SiteEntity();
         Page page = new Page();
 
 

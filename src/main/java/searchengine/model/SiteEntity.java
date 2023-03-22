@@ -9,13 +9,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Data
 @Entity
+@Table(name = "site")
 @NoArgsConstructor
-public class Site {
+public class SiteEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
+    @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "ENUM('INDEXING', 'INDEXED', 'FAILED')")
     private Enum status;
 
