@@ -1,7 +1,6 @@
 package searchengine.services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import searchengine.config.Site;
 import searchengine.config.SitesList;
@@ -22,16 +21,16 @@ import java.util.Random;
 public class StatisticsServiceImpl implements StatisticsService {
 
     private final Random random = new Random();
+
     private final SitesList sites;
 
 
-
-   private final SiteRepository siteRepository;
+    private final SiteRepository siteRepository;
 
 
     @Override
     public StatisticsResponse getStatistics() {
-        String[] statuses = { "INDEXED", "FAILED", "INDEXING" };
+        String[] statuses = {"INDEXED", "FAILED", "INDEXING"};
         String[] errors = {
                 "Ошибка индексации: главная страница сайта не доступна",
                 "Ошибка индексации: сайт не доступен",
@@ -44,7 +43,7 @@ public class StatisticsServiceImpl implements StatisticsService {
 
         List<DetailedStatisticsItem> detailed = new ArrayList<>();
         List<Site> sitesList = sites.getSites();
-        for(int i = 0; i < sitesList.size(); i++) {
+        for (int i = 0; i < sitesList.size(); i++) {
             Site site = sitesList.get(i);
             DetailedStatisticsItem item = new DetailedStatisticsItem();
             item.setName(site.getName());
@@ -84,9 +83,8 @@ public class StatisticsServiceImpl implements StatisticsService {
 
         siteRepository.save(site);
 
-//        UrlsContainer.setMainPageUrl(url);
-//        Node node = new ForkJoinPool()
-//                .invoke(new WebScraper(new Node(url)));
+        IndexationService indexationService = IndexationService();
+        indexationService.startIndexing(site.getUrl());
 
         return new ResponseSite(site.getStatus(), site.getUrl(), site.getName(), site.getLastError());
     }

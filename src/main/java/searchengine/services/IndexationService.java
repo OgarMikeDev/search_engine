@@ -1,23 +1,28 @@
 package searchengine.services;
 
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import searchengine.config.SitesList;
-import searchengine.model.Page;
-import searchengine.model.SiteEntity;
+import searchengine.repositories.PageRepository;
+import searchengine.services.fjp.Node;
+import searchengine.services.fjp.UrlsContainer;
+import searchengine.services.fjp.WebScraper;
+
+import java.util.concurrent.ForkJoinPool;
 
 @Service
 @RequiredArgsConstructor
+//@NoArgsConstructor
 public class IndexationService {
-    private final SitesList sitesList;
-    public ResponseEntity startIndexing() {
-        SiteEntity site = new SiteEntity();
-        Page page = new Page();
+//    private final SitesList sitesList;
+    private final PageRepository pageRepository;
 
 
-        return new ResponseEntity(page, HttpStatus.OK);
+    public void startIndexing(String url) {
+        UrlsContainer.setMainPageUrl(url);
+        Node node = new ForkJoinPool()
+                .invoke(new WebScraper(new Node(url)));
     }
 
 }
