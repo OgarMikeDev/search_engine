@@ -1623,8 +1623,7 @@ var API = function(){
                                 time.getSeconds() +
                                 '</div><div class="Statistics-option"><strong>Pages:</strong> ' + site.pages +
                                 '</div><div class="Statistics-option"><strong>Lemmas:</strong> ' + site.lemmas +
-                                '</div><div class="Statistics-option Statistics-option_error"><strong>Error:</strong> ' + site.error + '</div>'+
-                                '')
+                                '</div>' + (site.error ? '<div class="Statistics-option Statistics-option_error"><strong>Error:</strong> ' + site.error + '</div>' : '' ))
     
                         
                         $statistics.append($blockSiteExample);
@@ -1648,7 +1647,7 @@ var API = function(){
                             $this.removeClass('Tabs-block_update')
                         });
                     });
-                    if (result.statistics.total.isIndexing) {
+                    if (result.statistics.total.indexing) {
                         var $btnIndex = $('.btn[data-send="startIndexing"]'),
                             text = $btnIndex.find('.btn-content').text();
                         $btnIndex.find('.btn-content').text($btnIndex.data('alttext'));
