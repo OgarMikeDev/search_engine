@@ -6,8 +6,8 @@ indexing-settings:
       name: Лента.ру
     - url: https://skillbox.ru
       name: Skillbox
-#    - url: https://www.playback.ru
-#      name: PlayBack.Ru
+    - url: https://www.playback.ru
+      name: PlayBack.Ru
 #    - url: https://volochek.life
 #      name: volochek.life
 #    - url: https://www.lutherancathedral.ru/
